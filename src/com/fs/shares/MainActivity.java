@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 //				if(strSale == null){
 //					System.out.println("ss");
 //				}
-				if(strBuy == "" && strCount == "") {
+				if(strBuy != "" && strCount != "") {
 					Float buy = Float.valueOf(strBuy);
 					Integer count = Integer.valueOf(strCount);
 				
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 					Float baoben = (float) ((buy*count-guohu-yinhuashui-yongjinbuy)/(1.003*count));
 					tvMin.setText(baoben.toString());
 					
-					if(strSale == ""){
+					if(strSale != ""){
 						Float sale = Float.valueOf(strSale);
 						Float yongjinsale = (float) (sale*count*0.003);
 						if( yongjinsale < 5 )
