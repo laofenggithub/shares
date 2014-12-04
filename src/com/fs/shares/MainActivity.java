@@ -33,34 +33,33 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				String strSale = etSale.getText().toString();
-				String strBuy = etBuy.getText().toString();
-				String strCount = etCount.getText().toString();
-//				if(strSale == "«Î ‰»Î£°"){
-//					System.out.println("s");
-//				}
-//				if(strSale == null){
-//					System.out.println("ss");
-//				}
-				if(strBuy != "" && strCount != "") {
+				String strSale = etSale.getText().toString().trim();
+				String strBuy = etBuy.getText().toString().trim();
+				String strCount = etCount.getText().toString().trim();
+
+				if(!strBuy.equals("") && !strCount.equals("")) {
 					Float buy = Float.valueOf(strBuy);
 					Integer count = Integer.valueOf(strCount);
 				
-					Float guohu = (float) Math.ceil(count/1000);
+					Float guohu = (float) Math.ceil(count/1000.0)+1;
 					Float yinhuashui = (float) (buy*count*0.001);
 					
 					Float yongjinbuy = (float) (buy*count*0.003);
 					if( yongjinbuy < 5 )
 						yongjinbuy = (float) 5;
-					Float baoben = (float) ((buy*count-guohu-yinhuashui-yongjinbuy)/(1.003*count));
+					Float baoben = (float) ((buy*count+guohu+yongjinbuy)/count/0.996);
+					//((buy*count+guohu+yinhuashui+yongjinbuy)/(1.003*count));
+//					baoben*count = buy*count+guohu+yongjinbuy+baoben*count*0.003+baoben*count*0.001
+					
 					tvMin.setText(baoben.toString());
 					
-					if(strSale != ""){
+					if(!strSale.equals("")){
 						Float sale = Float.valueOf(strSale);
 						Float yongjinsale = (float) (sale*count*0.003);
+						yinhuashui = (float) (sale*count*0.001);
 						if( yongjinsale < 5 )
 							yongjinsale = (float) 5;
-						Float shouyi = (buy*count-guohu-yinhuashui-yongjinbuy-yongjinsale)/count;
+						Float shouyi = sale*count-buy*count-guohu-yinhuashui-yongjinbuy-yongjinsale;
 						tvIncome.setText(shouyi.toString());
 					}
 				}
