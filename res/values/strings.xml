@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">shares</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="strBuy">买入价：</string>
+    <string name="strSale">卖出价：</string>
+    <string name="strCount">股票数：</string>
+    <string name="strMin">保本价：</string>
+    <string name="strIncome">收益额：</string>
+    <string name="strHint">请输入!</string>
+    <string name="strCalculate">计算</string>
+    <string name="strZero">0</string>
+
+</resources>
